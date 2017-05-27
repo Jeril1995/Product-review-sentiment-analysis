@@ -26,16 +26,16 @@ def main():
     sourceCode = requests.get(amazon_url,headers = headers).text
 
     try:
-      # numb = re.findall(r'<span id="acrCustomerReviewText" class="a-size-base">(.*?) customer reviews</span>',sourceCode)
-      # for num1 in numb:
-      #  num = int(num1.replace(',',''))
-      # rem=num%10
-      # if (rem!=0):
-      #  r=int(num/10) +1
-      # else:
-      #  r=num/10
-      # if r > 30 : 
-      #  r=30
+      numb = re.findall(r'<span id="acrCustomerReviewText" class="a-size-base">(.*?) customer reviews</span>',sourceCode)
+      for num1 in numb:
+       num = int(num1.replace(',',''))
+      rem=num%10
+      if (rem!=0):
+       r=int(num/10) +1
+      else:
+       r=num/10
+      if r > 30 : 
+       r=30
       links = re.findall(r'<a id="acrCustomerReviewLink" class="a-link-normal" href="(.*?)"',sourceCode)
       for link in links[:1]:
        path = re.sub("/ref=.*","",link)
